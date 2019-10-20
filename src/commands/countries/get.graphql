@@ -1,0 +1,16 @@
+query Country($code: String!)
+  @oclif(description: "Query a single country by code") {
+  country(code: $code) {
+    name
+  }
+}
+
+fragment CountryFields on Country {
+  code
+  name
+  phone
+  currency
+  languages {
+    name
+  }
+}

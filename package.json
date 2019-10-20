@@ -17,7 +17,6 @@
     "@graphql-codegen/cli": "1.8.1",
     "@graphql-codegen/typescript": "1.8.1",
     "@graphql-codegen/typescript-operations": "1.8.1",
-    "@graphql-codegen/typescript-graphql-request": "1.8.1",
     "@types/jest": "24.0.18",
     "@types/node": "12.7.11",
     "jest": "24.9.0",
@@ -26,6 +25,11 @@
     "typescript": "3.6.3"
   },
   "dependencies": {
+    "@graphql-codegen/near-operation-file-preset": "1.8.1",
+    "@graphql-codegen/typescript-graphql-request": "1.8.1",
+    "@oclif/command": "1.5.19",
+    "@oclif/config": "1.13.3",
+    "@oclif/plugin-help": "2.2.1",
     "graphql": "14.5.8",
     "graphql-request": "1.8.2"
   }

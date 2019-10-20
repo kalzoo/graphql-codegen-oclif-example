@@ -1,8 +1,13 @@
 schema: https://countries.trevorblades.com/
-documents: 'src/graphql/**/*.graphql'
+documents: "src/commands/**/*.graphql"
 generates:
-  src/sdk.ts:
+  src/types.ts:
+    - typescript
+  src/commands/:
+    preset: near-operation-file
+    presetConfig:
+      extension: .ts
+      baseTypesPath: ../types.ts
     plugins:
-      - typescript
       - typescript-operations
-      - typescript-graphql-request
+      - typescript-cli

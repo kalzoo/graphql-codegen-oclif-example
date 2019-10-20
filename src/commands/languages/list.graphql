@@ -1,0 +1,8 @@
+query Languages {
+  languages {
+    code
+    name
+    native
+    rtl
+  }
+}

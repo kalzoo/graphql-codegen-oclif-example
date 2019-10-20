@@ -64,4 +64,6 @@ typings/
 dist
 
 # Generated files
+src/cli.ts
 src/sdk.ts
+src/commands/**/*.ts
