@@ -37,9 +37,8 @@ generates:
       extension: .ts
       baseTypesPath: ../types.ts
     plugins:
-      - typescript-operations
       - typescript-cli:
-          client: ../client.ts 
+          client: ../../client
 ```
 
 Breaking that down: 
@@ -48,3 +47,32 @@ Breaking that down:
 * The 'documents' section will collect all of your `*.graphql` files
 * `src/types.ts` creates the typescript types that the rest of the tool can reference
 * `near-operation-file` is a `graphql-codegen` preset which allows one output file per input file (ie, one `.ts` module per `.graphql` document) rather than one output file for the whole package. This is _required_ for `oclif` to work, since it relies on the file structure for information.
+* Note: `typescript-operations` plugin isn't required, since this library isn't meant to be consumed programmatically (and so nothing reads the types that `typescript-operations` would produce)
+* The `client` path is to the file which has a default export of your `graphql-request` client, relative to the generated files (ie here, `src/commands/something/file.graphql`). Note that it has no extension.
+
+With that configured, just run `yarn graphql-codegen` or `npx graphql-codegen` to generate all the necessary `oclif` command files. With that complete, follow the directions in the [oclif guide](https://oclif.io/docs/introduction) to run your new CLI tool.
+
+## Advanced Features
+
+### Descriptions
+
+`typescript-cli` will automatically add descriptions from your schema to the commands here. However, if you'd like to override those descriptions, or none are present in the schema, you can use the `@oclif` directive like so:
+
+```
+mutation CreateAuthor($name: String!)
+  @oclif(description: "Create a new author") {
+  createAuthor(input: { name: $name }) {
+    name
+  }
+}
+```
+
+### Custom/Manually-maintained Commands
+
+If you want a command that doesn't just execute a GraphQL Query or Mutation, then you can still create one manually in the same way as any other `oclif` application. If you wanted to add a `fix` command, for example, you can just create a file at `src/commands/fix.ts`, follow the `oclif` API (ie, export a class with a `run()` method), and `graphql-codegen` won't disturb that file - so long as you don't _also_ create a `fix.graphql` file next to it (in which case, it would overrride `fix.ts` on the next `yarn generate`).
+
+## The Example Application
+
+This repo is an example of a working `typescript-cli` application, built using the same steps as above.
+
+To run the example, first install dependencies with `yarn install` or `npm install`, then start the toy server in one terminal: `yarn start:example_server` or `npm run start:example_server`. If it's successful, you'll see `Server ready at http://localhost:4000/`. Then, in a second terminal, run `yarn codegen`, and see the `.ts` files populate under `src/commands`. Then, run the cli with `bin/run`, and use the helpful output to navigate through the options.

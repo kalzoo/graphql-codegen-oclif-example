@@ -9,4 +9,5 @@ generates:
       extension: .ts
       baseTypesPath: ../types.ts
     plugins:
-      - typescript-cli
+      - typescript-cli:
+          clientPath: ../../client
