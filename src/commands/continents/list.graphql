@@ -3,7 +3,7 @@ query continents {
     code
     name
     countries {
-      ...CountryFields
+      name
     }
   }
 }

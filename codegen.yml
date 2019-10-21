@@ -9,5 +9,4 @@ generates:
       extension: .ts
       baseTypesPath: ../types.ts
     plugins:
-      - typescript-operations
       - typescript-cli
