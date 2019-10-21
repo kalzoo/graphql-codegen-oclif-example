@@ -27,6 +27,7 @@
     "build": "tsc",
     "prestart": "yarn build",
     "start": "node dist/index.js",
+    "start:example_server": "ts-node-dev --respawn server/index.ts",
     "dev": "ts-node-dev --respawn src/index.ts",
     "postpack": "rm -f oclif.manifest.json",
     "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
@@ -36,14 +37,14 @@
     "@graphql-codegen/cli": "1.8.1",
     "@graphql-codegen/typescript": "1.8.1",
     "@graphql-codegen/typescript-operations": "1.8.1",
+    "@oclif/dev-cli": "^1",
     "@types/jest": "24.0.18",
     "@types/node": "12.7.11",
+    "globby": "^10",
     "jest": "24.9.0",
     "ts-jest": "24.1.0",
     "ts-node-dev": "1.0.0-pre.43",
-    "typescript": "3.6.3",
-    "@oclif/dev-cli": "^1",
-    "globby": "^10"
+    "typescript": "3.6.3"
   },
   "dependencies": {
     "@graphql-codegen/near-operation-file-preset": "1.8.1",
@@ -51,6 +52,7 @@
     "@oclif/command": "1.5.19",
     "@oclif/config": "1.13.3",
     "@oclif/plugin-help": "2.2.1",
+    "apollo-server": "2.9.6",
     "graphql": "14.5.8",
     "graphql-request": "1.8.2"
   }

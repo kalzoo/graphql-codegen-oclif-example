@@ -1,0 +1,9 @@
+query GetPublisher($name: String!)
+  @oclif(description: "Find a publisher by name") {
+  publisher(name: $name) {
+    name
+    books {
+      title
+    }
+  }
+}

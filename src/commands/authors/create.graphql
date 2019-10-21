@@ -1,0 +1,6 @@
+mutation CreateAuthor($name: String!)
+  @oclif(description: "Create a new author") {
+  createAuthor(input: { name: $name }) {
+    name
+  }
+}

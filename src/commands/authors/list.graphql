@@ -1,0 +1,5 @@
+query ListAuthors @oclif(description: "List all authors") {
+  authors {
+    name
+  }
+}

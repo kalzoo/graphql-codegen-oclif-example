@@ -11,61 +11,71 @@ export type Scalars = {
 };
 
 
+export type Author = {
+   __typename?: 'Author',
+  name: Scalars['String'],
+  books?: Maybe<Array<Book>>,
+};
+
+export type AuthorInput = {
+  name: Scalars['String'],
+};
+
+export type Book = {
+   __typename?: 'Book',
+  author: Author,
+  title: Scalars['String'],
+};
+
+export type BookInput = {
+  author?: Maybe<AuthorInput>,
+  title: Scalars['String'],
+};
+
 export enum CacheControlScope {
   Public = 'PUBLIC',
   Private = 'PRIVATE'
 }
 
-export type Continent = {
-   __typename?: 'Continent',
-  code?: Maybe<Scalars['String']>,
-  name?: Maybe<Scalars['String']>,
-  countries?: Maybe<Array<Maybe<Country>>>,
+export type Mutation = {
+   __typename?: 'Mutation',
+  createAuthor: Author,
+  contractBook: Scalars['Boolean'],
+  writeBook: Book,
 };
 
-export type Country = {
-   __typename?: 'Country',
-  code?: Maybe<Scalars['String']>,
-  name?: Maybe<Scalars['String']>,
-  native?: Maybe<Scalars['String']>,
-  phone?: Maybe<Scalars['String']>,
-  continent?: Maybe<Continent>,
-  currency?: Maybe<Scalars['String']>,
-  languages?: Maybe<Array<Maybe<Language>>>,
-  emoji?: Maybe<Scalars['String']>,
-  emojiU?: Maybe<Scalars['String']>,
+
+export type MutationCreateAuthorArgs = {
+  input: AuthorInput
 };
 
-export type Language = {
-   __typename?: 'Language',
-  code?: Maybe<Scalars['String']>,
-  name?: Maybe<Scalars['String']>,
-  native?: Maybe<Scalars['String']>,
-  rtl?: Maybe<Scalars['Int']>,
+
+export type MutationContractBookArgs = {
+  bookInput: BookInput,
+  publisherName: Scalars['String']
+};
+
+
+export type MutationWriteBookArgs = {
+  input: BookInput
+};
+
+export type Publisher = {
+   __typename?: 'Publisher',
+  name: Scalars['String'],
+  authors?: Maybe<Array<Author>>,
+  books?: Maybe<Array<Book>>,
 };
 
 export type Query = {
    __typename?: 'Query',
-  continents?: Maybe<Array<Maybe<Continent>>>,
-  continent?: Maybe<Continent>,
-  countries?: Maybe<Array<Maybe<Country>>>,
-  country?: Maybe<Country>,
-  languages?: Maybe<Array<Maybe<Language>>>,
-  language?: Maybe<Language>,
+  authors?: Maybe<Array<Author>>,
+  books?: Maybe<Array<Book>>,
+  publisher?: Maybe<Publisher>,
 };
 
 
-export type QueryContinentArgs = {
-  code?: Maybe<Scalars['String']>
-};
-
-
-export type QueryCountryArgs = {
-  code?: Maybe<Scalars['String']>
-};
-
-
-export type QueryLanguageArgs = {
-  code?: Maybe<Scalars['String']>
+export type QueryPublisherArgs = {
+  name: Scalars['String']
 };
 

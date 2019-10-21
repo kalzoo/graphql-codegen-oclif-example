@@ -1,0 +1,4 @@
+mutation ContractBook($title: String!, $publisherName: String!)
+  @oclif(description: "Contract a book to a publisher") {
+  contractBook(bookInput: { title: $title }, publisherName: $publisherName)
+}

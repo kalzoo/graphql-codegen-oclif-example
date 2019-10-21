@@ -1,0 +1,9 @@
+mutation WriteBook($authorName: String!, $title: String!)
+  @oclif(description: "Write a new book") {
+  writeBook(input: { author: { name: $authorName }, title: $title }) {
+    title
+    author {
+      name
+    }
+  }
+}
