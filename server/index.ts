@@ -12,6 +12,7 @@ const typeDefs = gql`
 
   type Book {
     author: Author!
+    rating: Float
     title: String!
   }
 
@@ -35,6 +36,10 @@ const typeDefs = gql`
   type Mutation {
     createAuthor(input: AuthorInput!): Author!
     contractBook(bookInput: BookInput!, publisherName: String!): Boolean!
+    """
+    Set the 0-5 star rating for a book
+    """
+    rateBook(title: String!, rating: Float!): Book
     writeBook(input: BookInput!): Book!
   }
 `;
@@ -46,6 +51,7 @@ interface AuthorRecord {
 interface BookRecord {
   title: string;
   authorName: string;
+  rating?: number;
 }
 
 interface PublisherRecord {
@@ -62,7 +68,8 @@ const authors: AuthorRecord[] = [
 const books: BookRecord[] = [
   {
     title: "Harry Potter & the Lucrative Franchise",
-    authorName: "JK Rowling"
+    authorName: "JK Rowling",
+    rating: 3.5
   }
 ];
 
@@ -108,6 +115,22 @@ const resolvers = {
         return true;
       }
       return false;
+    },
+    rateBook: (
+      _: any,
+      {
+        title,
+        rating
+      }: {
+        title: string;
+        rating: number;
+      }
+    ) => {
+      const book = books.find(book => book.title === title);
+      if (book) {
+        book.rating = rating;
+      }
+      return book;
     },
     writeBook: (
       _: any,

@@ -24,6 +24,7 @@ export type AuthorInput = {
 export type Book = {
    __typename?: 'Book',
   author: Author,
+  rating?: Maybe<Scalars['Float']>,
   title: Scalars['String'],
 };
 
@@ -41,6 +42,8 @@ export type Mutation = {
    __typename?: 'Mutation',
   createAuthor: Author,
   contractBook: Scalars['Boolean'],
+  /** Set the 0-5 star rating for a book */
+  rateBook?: Maybe<Book>,
   writeBook: Book,
 };
 
@@ -53,6 +56,12 @@ export type MutationCreateAuthorArgs = {
 export type MutationContractBookArgs = {
   bookInput: BookInput,
   publisherName: Scalars['String']
+};
+
+
+export type MutationRateBookArgs = {
+  title: Scalars['String'],
+  rating: Scalars['Float']
 };
 
 
