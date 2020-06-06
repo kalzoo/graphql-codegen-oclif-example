@@ -53,7 +53,7 @@
     "@oclif/command": "1.5.19",
     "@oclif/config": "1.13.3",
     "@oclif/plugin-help": "2.2.1",
-    "apollo-server": "2.9.6",
+    "apollo-server": "2.14.2",
     "graphql": "14.5.8",
     "graphql-request": "1.8.2"
   }
