@@ -10,4 +10,4 @@ generates:
       baseTypesPath: ../types.ts
     plugins:
       - typescript-oclif:
-          clientPath: ../../client
+          handlerPath: ../../handler
