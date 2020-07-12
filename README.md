@@ -1,11 +1,13 @@
 # GraphQL Codegen: CLI
 
+![](docs/assets/codegen_plus_oclif.svg)
+
 With GraphQL Codegen, building a CLI tool for your GraphQL API couldn't be easier. In four steps,
 you can have a user-friendly command-line interface:
 
 1. Generate a boilerplate CLI using `oclif`
 2. Add GraphQL Documents (Queries & Mutations)
-3. Add and export a graphql client of your choice (`graphql-request`, `apollo-client`, etc)
+3. Add and configure a handler with the graphql client of your choice (`graphql-request`, `apollo-client`, etc)
 4. Add, configure, and run the code generator
 
 In short: you'll use `.graphql` document files with `@oclif` directives to generate `oclif` commands
