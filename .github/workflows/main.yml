@@ -4,14 +4,14 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v1
-    - name: Install Dependencies
-      run: yarn
-    - name: Build
-      run: yarn build
-    - name: Test
-      run: yarn test
+      - uses: actions/checkout@v1
+      - name: Install Dependencies
+        run: yarn install
+      - name: Generate
+        run: |
+          yarn start:example_server &
+          sleep 5
+          yarn codegen

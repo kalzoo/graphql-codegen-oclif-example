@@ -20,13 +20,12 @@
     "/oclif.manifest.json"
   ],
   "scripts": {
-    "generate": "graphql-codegen",
+    "codegen": "graphql-codegen",
     "prebuild": "yarn generate",
     "predev": "yarn generate",
     "test": "jest",
     "build": "tsc",
     "prestart": "yarn build",
-    "start": "node dist/index.js",
     "start:example_server": "ts-node-dev --respawn server/index.ts",
     "dev": "ts-node-dev --respawn src/index.ts",
     "postpack": "rm -f oclif.manifest.json",
@@ -34,27 +33,28 @@
     "version": "oclif-dev readme && git add README.md"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "1.8.1",
-    "@graphql-codegen/near-operation-file-preset": "1.8.1",
-    "@graphql-codegen/typescript": "1.8.1",
-    "@graphql-codegen/typescript-graphql-request": "1.8.1",
-    "@graphql-codegen/typescript-oclif": "1.8.1",
-    "@graphql-codegen/typescript-operations": "1.8.1",
-    "@oclif/dev-cli": "^1",
-    "@types/jest": "24.0.18",
-    "@types/node": "12.7.11",
-    "globby": "^10",
-    "jest": "24.9.0",
-    "ts-jest": "24.1.0",
+    "@graphql-codegen/cli": "1.17.0",
+    "@graphql-codegen/near-operation-file-preset": "1.17.0",
+    "@graphql-codegen/typescript": "1.17.0",
+    "@graphql-codegen/typescript-graphql-request": "1.17.0",
+    "@graphql-codegen/typescript-oclif": "1.17.0",
+    "@graphql-codegen/typescript-operations": "1.17.0",
+    "@oclif/dev-cli": "1.22.2",
+    "@types/jest": "26.0.4",
+    "@types/node": "14.0.22",
+    "globby": "11.0.1",
+    "jest": "26.1.0",
+    "ts-jest": "26.1.1",
     "ts-node-dev": "1.0.0-pre.43",
-    "typescript": "3.6.3"
+    "typescript": "3.9.6"
   },
   "dependencies": {
-    "@oclif/command": "1.5.19",
-    "@oclif/config": "1.13.3",
-    "@oclif/plugin-help": "2.2.1",
-    "apollo-server": "2.9.6",
-    "graphql": "14.5.8",
-    "graphql-request": "1.8.2"
+    "@oclif/command": "1.7.0",
+    "@oclif/config": "1.16.0",
+    "@oclif/plugin-help": "3.1.0",
+    "apollo-server": "2.15.1",
+    "graphql": "15.3.0",
+    "graphql-request": "1.8.2",
+    "graphql-tools": "6.0.12"
   }
 }
